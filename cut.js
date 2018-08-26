@@ -23,6 +23,7 @@ const add = (arr, el, i, tipo) => {
     }
 }
 
+
 const cut = (email, cb) => {
     const cuted = pdf.pages(...email.pages);
     const output = `./outputs/cut-${email.tipo}-${email.to}.pdf`;
@@ -66,7 +67,10 @@ fs.readFile('./files/emails.csv', 'utf8', (err, contents) => {
         });
     }, e => {
         if (e) console.log(e);
+        console.log("Done!!");
         console.log(allEmails);
+        const obj = JSON.stringify(allEmails);
+        fs.writeFile('./emails.json', obj);
     });
 });
 
